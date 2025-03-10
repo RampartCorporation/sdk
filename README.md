@@ -1,5 +1,4 @@
-# sdk
-Rampart Integration SDK
+# Rampart SDK
 
 ## Install
 ```
