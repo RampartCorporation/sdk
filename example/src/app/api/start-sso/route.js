@@ -3,14 +3,14 @@ import { RampartClient } from "@rampartcorporation/sdk";
 
 // Initialize Rampart Client
 const rampartClient = new RampartClient({
-  secret: process.env.RAMPART_SECRET, // Your secret key
+  secret: 'sk-rvG7cx30dnuTbQMccDt5nYIXhvGeYtxf', // Your secret key
 });
 
 export async function GET() {
   try {
     // You would get this from your database
     const rampartPayload = {
-      iss: process.env.RAMPART_PARTNER_ID, // Your partner ID
+      iss: '019588b4-3bad-7605-8408-bdcd111df8da', // Your partner ID
       user: {
         id: "1234567890", // ID you associate with this user
         firstName: "John",
