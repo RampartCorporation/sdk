@@ -9,6 +9,7 @@ const rampartClient = new RampartClient({
 
 export async function GET() {
   try {
+    console.log("RAMPART_SECRET", process.env.RAMPART_PARTNER_ID);
     // You would get this from your database
     const rampartPayload = {
       iss: process.env.RAMPART_PARTNER_ID, // Your partner ID
