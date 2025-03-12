@@ -1,24 +1,17 @@
-require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
-const { RampartClient } = require("@rampartcorporation/sdk");
-
-const app = express();
-app.use(express.json());
-app.use(cors());
+import { NextResponse } from "next/server";
+import { RampartClient } from "@rampartcorporation/sdk";
 
 // Initialize Rampart Client
 const rampartClient = new RampartClient({
-  secret: process.env.RAMPART_SECRET, // Load your secret from .env
+  secret: process.env.RAMPART_SECRET, // Your secret key
   environment: "development",
 });
 
-// SSO Endpoint
-app.get("/start-sso", async (req, res) => {
+export async function GET() {
   try {
     // You would get this from your database
     const rampartPayload = {
-      iss: "a1e01b75-d66c-4234-90c3-2e8b9941b7da", // Your partner ID
+      iss: process.env.RAMPART_PARTNER_ID, // Your partner ID
       user: {
         id: "1234567890", // ID you associate with this user
         firstName: "John",
@@ -42,18 +35,17 @@ app.get("/start-sso", async (req, res) => {
 
     // Generate the Rampart URL
     const response = await rampartClient.generateRampartLink(rampartPayload);
-
     const rampartUrl = response.data.link;
 
-    console.log("Rampart URL:", rampartUrl);
+    console.log("Rampart Redirect URL:", rampartUrl);
 
-    // Redirect to the Rampart URL
-    res.json({ rampartUrl });
+    // Return the Rampart URL as JSON
+    return NextResponse.json({ rampartUrl });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "SSO generation failed" });
+    return NextResponse.json(
+      { error: "SSO generation failed" },
+      { status: 500 }
+    );
   }
-});
-
-// Start Server
-app.listen(3001, () => console.log(`Backend running on http://localhost:3001`));
+}
