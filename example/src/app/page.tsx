@@ -1,13 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import "./globals.css";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [userExists, setUserExists] = useState(false);
   const [showConsent, setShowConsent] = useState(false);
 
   // Sample user and business data - in a real app you would get this from your database
@@ -15,7 +14,7 @@ export default function Home() {
     id: "1234567890",
     firstName: "John",
     lastName: "Doe",
-    email: "johnabc@example.com",
+    email: "john@example.com",
     phone: "+1234567890",
   };
 
@@ -38,8 +37,6 @@ export default function Home() {
       const response = await axios.post("/api/check-user", {
         userId: userData.id,
       });
-
-      setUserExists(response.data.exists);
 
       // If user exists, proceed directly to SSO
       // Otherwise, show the consent form
@@ -107,7 +104,7 @@ export default function Home() {
           </p>
 
           <div className="info-box">
-            <h3>Information we'll share:</h3>
+            <h3>Information we&apos;ll share:</h3>
             <ul>
               <li>Personal Information</li>
               <li>Business Details</li>
