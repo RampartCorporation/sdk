@@ -4,7 +4,6 @@ import { RampartClient } from "@rampartcorporation/sdk";
 // Initialize Rampart Client
 const rampartClient = new RampartClient({
   secret: process.env.RAMPART_SECRET, // Your secret key
-  environment: process.env.ENVIRONMENT,
 });
 
 export async function GET() {
