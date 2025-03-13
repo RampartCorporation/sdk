@@ -1,36 +1,17 @@
 import { NextResponse } from "next/server";
-import { RampartClient } from "@rampartcorporation/sdk";
+import { getRampartClient } from "../../../utils/rampartClient";
 
-// Initialize Rampart Client
-const rampartClient = new RampartClient({
-  secret: process.env.RAMPART_SECRET, // Your secret key
-});
-
-export async function GET() {
+export async function POST(request) {
   try {
-    console.log("RAMPART_SECRET", process.env.RAMPART_PARTNER_ID);
-    // You would get this from your database
+    const { userData, businessData } = await request.json();
+
+    // Get the shared Rampart client instance
+    const rampartClient = getRampartClient();
+
+    // Prepare the payload for Rampart
     const rampartPayload = {
-      iss: process.env.RAMPART_PARTNER_ID, // Your partner ID
-      user: {
-        id: "1234567890", // ID you associate with this user
-        firstName: "John",
-        lastName: "Doe",
-        email: "john@example.com",
-        phone: "+1234567890", // Optional
-      },
-      business: {
-        id: "1234567890", // ID you associate with the business
-        name: "Acme, Inc.",
-        addressLine1: "123 Main St",
-        addressLine2: "4th Floor", // Optional
-        city: "San Francisco",
-        state: "CA",
-        zip: "94101",
-        country: "USA",
-        email: "contact@acme.com",
-        phone: "+1234567890", // Optional
-      },
+      user: userData,
+      business: businessData,
     };
 
     // Generate the Rampart URL

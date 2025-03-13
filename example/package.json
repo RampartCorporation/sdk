@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@rampartcorporation/sdk": "^0.0.11",
+    "@rampartcorporation/sdk": "^0.0.12",
     "axios": "^1.8.2",
     "dotenv": "^16.4.7",
     "next": "15.2.2",
