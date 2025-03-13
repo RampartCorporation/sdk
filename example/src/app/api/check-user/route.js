@@ -15,6 +15,10 @@ export async function POST(request) {
     // Get the shared Rampart client instance
     const rampartClient = getRampartClient();
 
+    console.log(rampartClient.partnerId);
+    console.log(rampartClient.secret);
+    console.log(rampartClient.environment);
+
     // Check if user exists in Rampart system
     const exists = await rampartClient.checkUserExists(userId);
 
