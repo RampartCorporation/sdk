@@ -28,15 +28,12 @@ body {
 /* Container */
 .container {
   width: 90%;
-  max-width: 800px;
-  padding: 2rem;
+  max-width: 600px;
+  padding: 32px;
   background: var(--bg-secondary);
   border-radius: 12px;
   border: 1px solid var(--border-color);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  margin: 0 auto;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, sans-serif;
 }
 
 h1 {
@@ -49,12 +46,13 @@ h1 {
 
 /* Error message */
 .error-message {
-  background-color: #fee2e2;
-  border: 1px solid #f87171;
-  color: #b91c1c;
-  padding: 0.75rem;
-  border-radius: 0.25rem;
-  margin-bottom: 1rem;
+  background: var(--error-bg);
+  border: 1px solid var(--error-border);
+  color: var(--error-text);
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 16px;
+  margin-bottom: 16px;
   text-align: center;
   font-size: 14px;
   animation: fadeIn 0.3s ease;
@@ -63,34 +61,32 @@ h1 {
 /* Button container */
 .button-container {
   text-align: center;
-  margin: 2rem 0;
+  margin: 24px 0;
 }
 
 /* Start button */
 .start-button {
-  background-color: #3b82f6;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 0.25rem;
-  font-weight: 500;
+  background: var(--accent);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 14px;
   cursor: pointer;
-  width: 100%;
   font-family: monospace;
   letter-spacing: 0.5px;
   transition: all 0.2s ease;
 }
 
 .start-button:hover {
-  background-color: #2563eb;
+  background: var(--accent-hover);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Loading container */
 .loading-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2rem 0;
+  text-align: center;
+  padding: 32px;
 }
 
 .loading-container p {
@@ -102,93 +98,116 @@ h1 {
 
 /* Loading spinner */
 .loading-spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #3b82f6;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--accent);
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  animation: spin 1s linear infinite;
-  margin-bottom: 1rem;
+  border-top-color: var(--text-primary);
+  margin: 0 auto;
+  animation: spin 0.8s linear infinite;
 }
 
 /* Consent modal */
 .consent-modal {
-  background-color: white;
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  background: var(--bg-secondary);
+  padding: 24px;
+  border-radius: 8px;
   animation: slideUp 0.3s ease;
 }
 
 .consent-modal h2 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
 }
 
 .consent-modal p {
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 /* Info box */
 .info-box {
-  background-color: #f3f4f6;
-  padding: 1rem;
-  border-radius: 0.25rem;
-  margin-bottom: 1.5rem;
+  background: var(--bg-tertiary);
+  padding: 16px;
+  border-radius: 6px;
+  margin: 16px 0;
+  border: 1px solid var(--border-color);
 }
 
 .info-box h3 {
+  margin-bottom: 12px;
+  font-size: 14px;
   font-weight: 500;
-  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
 }
 
 .info-box ul {
-  list-style-type: disc;
-  padding-left: 1.5rem;
+  padding-left: 20px;
+  list-style-type: none;
+  margin: 0;
 }
 
+.info-box li {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  position: relative;
+}
+
+.info-box li::before {
+  content: "→";
+  position: absolute;
+  left: -20px;
+  color: var(--text-secondary);
+}
+
+/* Consent buttons */
 .consent-buttons {
   display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.cancel-button,
+.consent-button {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: monospace;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
 }
 
 .cancel-button {
-  background-color: #e5e7eb;
-  color: #374151;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 0.25rem;
-  cursor: pointer;
+  background: transparent;
+  color: var(--text-secondary);
 }
 
 .cancel-button:hover {
-  background-color: #d1d5db;
+  background: var(--bg-tertiary);
 }
 
 .consent-button {
-  background-color: #3b82f6;
-  color: white;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 0.25rem;
-  cursor: pointer;
+  background: var(--accent);
+  color: var(--text-primary);
 }
 
 .consent-button:hover {
-  background-color: #2563eb;
+  background: var(--accent-hover);
 }
 
 /* Animations */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes slideUp {
@@ -203,9 +222,7 @@ h1 {
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }
 
 /* Mobile responsiveness */
