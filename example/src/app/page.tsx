@@ -12,7 +12,7 @@ export default function Home() {
 
   // Sample user and business data - in a real app you would get this from your database
   const userData = {
-    id: "1234567890abc",
+    id: "1234567890",
     firstName: "John",
     lastName: "Doe",
     email: "johnabc@example.com",
